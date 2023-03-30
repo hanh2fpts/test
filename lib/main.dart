@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
+import 'package:fluttertoast/fluttertoast.dart';
 void main() {
   runApp(const MyApp());
 }
@@ -36,9 +36,28 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Material(
       child: Center(
-        child: ElevatedButton(
-          onPressed: _toastMessage,
-          child: const Text('Toast a message'),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ElevatedButton(
+              onPressed: _toastMessage,
+              child: const Text('Toast a message'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Fluttertoast.showToast(
+                    msg: "This is Center Short Toast",
+                    toastLength: Toast.LENGTH_SHORT,
+                    gravity: ToastGravity.BOTTOM,
+                    timeInSecForIosWeb: 1,
+                    backgroundColor: Colors.red,
+                    textColor: Colors.white,
+                    fontSize: 16.0
+                );
+              },
+              child: const Text('Toast a message package'),
+            ),
+          ],
         ),
       ),
     );
